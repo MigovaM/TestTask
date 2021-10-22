@@ -16,7 +16,6 @@ const ListContainer = (): JSX.Element => {
   }, []);
 
   const goToDetails = () => {
-    console.log('Hello');
     navigation.navigate('details');
   };
 
