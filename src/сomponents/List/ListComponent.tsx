@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, TouchableOpacity} from 'react-native';
+import {FlatList, TouchableOpacity, Text} from 'react-native';
 // import {
 //   NativeBaseProvider,
 //   Box,
@@ -14,21 +14,33 @@ import {IEvent} from '../../services/interfaces/index.interfaces';
 interface ListComponentProps {
   goToDetails(): void;
   events: IEvent[];
+  pullToRefreshHandler(): void;
+  refreshing: boolean;
 }
 
 const ListComponent = ({
   goToDetails,
   events,
+  pullToRefreshHandler,
+  refreshing,
 }: ListComponentProps): JSX.Element => {
-  const renderItem = ({item}: IEvent) => {
+  const renderItem = ({item}: {item: IEvent}) => {
     return (
       <TouchableOpacity onPress={goToDetails}>
-          <Text>{item.actor.display_login}</Text>
+        <Text>{item.actor.display_login}</Text>
       </TouchableOpacity>
     );
   };
 
-  return <FlatList data={events} renderItem={renderItem} />;
+  return (
+    <FlatList
+      onRefresh={pullToRefreshHandler}
+      refreshing={refreshing}
+      data={events}
+      initialNumToRender={25}
+      renderItem={renderItem}
+    />
+  );
 };
 
 export default ListComponent;

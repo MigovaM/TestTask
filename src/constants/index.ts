@@ -1,0 +1,4 @@
+export enum TIME {
+  MINUTE = 60000,
+  FIFTEEN_SECONDS = 15000,
+}
