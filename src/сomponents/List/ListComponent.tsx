@@ -1,7 +1,6 @@
 import React from 'react';
 import {FlatList, TouchableOpacity} from 'react-native';
 import {
-  NativeBaseProvider,
   Box,
   HStack,
   Text,
@@ -13,11 +12,15 @@ import {IEvent} from '../../services/interfaces/index.interfaces';
 interface ListComponentProps {
   goToDetails(item: IEvent): void;
   events: IEvent[];
+  pullToRefreshHandler(): void;
+  refreshing: boolean;
 }
 
 const ListComponent = ({
   goToDetails,
   events,
+  pullToRefreshHandler,
+  refreshing,
 }: ListComponentProps): JSX.Element => {
   const renderItem = ({item}: {item: IEvent}) => {
     return (
@@ -55,7 +58,15 @@ const ListComponent = ({
     );
   };
 
-  return <FlatList data={events} renderItem={renderItem} />;
+  return (
+    <FlatList
+      onRefresh={pullToRefreshHandler}
+      refreshing={refreshing}
+      data={events}
+      initialNumToRender={25}
+      renderItem={renderItem}
+    />
+  );
 };
 
 export default ListComponent;
