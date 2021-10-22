@@ -1,4 +1,4 @@
-import { IEvent } from "../../interfaces/index.interfaces";
+import {IEvent} from '../../services/interfaces/index.interfaces';
 
 export const GET_EVENTS_REQUEST = 'GET_EVENTS_REQUEST';
 export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
@@ -19,4 +19,4 @@ export interface ActionSuccess {
   payload: IEvent[];
 }
 
-export type ActionsTypes = ActionRequest | ActionSuccess
+export type ActionsTypes = ActionRequest | ActionSuccess;

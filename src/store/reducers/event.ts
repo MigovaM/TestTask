@@ -6,7 +6,7 @@ import {
 } from '../constants/constants';
 import setRequestState from './setRequestsState';
 import {ActionsTypes, ActionSuccess} from '../constants/constants';
-import {IEvent} from '../../interfaces/index.interfaces';
+import {IEvent} from '../../services/interfaces/index.interfaces';
 
 interface IState extends IStateLoading {
   events: IEvent[];

@@ -6,4 +6,4 @@ axios.defaults.headers = {
   'Content-Type': 'application/json',
 };
 
-export const axiosConfig = axios;
+export const networkClient = axios;

@@ -1,12 +1,6 @@
 import React from 'react';
 import {FlatList, TouchableOpacity} from 'react-native';
-import {
-  Box,
-  HStack,
-  Text,
-  Avatar,
-  Spacer,
-} from 'native-base';
+import {Box, HStack, Text, Avatar, Spacer} from 'native-base';
 import {IEvent} from '../../services/interfaces/index.interfaces';
 
 interface ListComponentProps {
@@ -24,7 +18,7 @@ const ListComponent = ({
 }: ListComponentProps): JSX.Element => {
   const renderItem = ({item}: {item: IEvent}) => {
     return (
-      <TouchableOpacity onPress={() => goToDetails(item)}>
+      <TouchableOpacity onPress={() => goToDetails(item)} key={item.id}>
         <Box
           borderBottomWidth="1"
           _dark={{
@@ -65,6 +59,7 @@ const ListComponent = ({
       data={events}
       initialNumToRender={25}
       renderItem={renderItem}
+      removeClippedSubviews
     />
   );
 };

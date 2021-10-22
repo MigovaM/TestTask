@@ -1,7 +1,16 @@
-import React, {memo} from 'react';
+import React from 'react';
+import {useRoute, RouteProp} from '@react-navigation/native';
 import {VStack, Avatar, Text} from 'native-base';
+import {IEvent} from '../../services/interfaces/index.interfaces';
 
-const DetailsComponent = ({route}): JSX.Element => {
+type DetailsComponentRoute = {
+  details: {
+    item: IEvent;
+  };
+};
+
+const DetailsComponent = (): JSX.Element => {
+  const route = useRoute<RouteProp<DetailsComponentRoute, 'details'>>();
   const {item} = route.params;
 
   return (
@@ -22,11 +31,11 @@ const DetailsComponent = ({route}): JSX.Element => {
       <Text pt={10} fontSize={20} bold>
         {item.actor.display_login}
       </Text>
-      <Text pt={7} fontSize={16}>
+      <Text pt={7} fontSize={16} textAlign="center">
         {item.actor.url}
       </Text>
     </VStack>
   );
 };
 
-export default memo(DetailsComponent);
+export default DetailsComponent;

@@ -4,7 +4,7 @@ import {
   GET_EVENTS_ERROR,
 } from '../constants/constants';
 import {ActionsTypes} from '../constants/constants';
-import {IEvent} from '../../interfaces/index.interfaces';
+import {IEvent} from '../../services/interfaces/index.interfaces';
 
 export function getEventsRequest(): ActionsTypes {
   return {
