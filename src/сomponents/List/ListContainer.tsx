@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import ListComponent from './ListComponent';
 import {RootState} from '../../services/store';
 import {getEventsRequest} from '../../services/store/actions/actions';
+import {IEvent} from '../../services/interfaces/index.interfaces';
 
 const ListContainer = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -15,8 +16,8 @@ const ListContainer = (): JSX.Element => {
     dispatch(getEventsRequest());
   }, []);
 
-  const goToDetails = () => {
-    navigation.navigate('details');
+  const goToDetails = (item: IEvent) => {
+    navigation.navigate('details', {item});
   };
 
   return <ListComponent goToDetails={goToDetails} events={events} />;
